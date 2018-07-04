@@ -1,0 +1,25 @@
+package com.aliashik.controller;
+
+import com.aliashik.dao.EmployeeDao;
+import com.aliashik.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class TestController {
+
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public List<Employee>getEmployees(){
+
+        List<Employee> employees = employeeDao.getEmployees();
+        System.out.println(employees);
+        return employees;
+    }
+}
